@@ -2116,16 +2116,20 @@ the_chosen_home_initializer = {
 				}
 				day_zero_contact = no # otherwise enclaves and FEs get instant comms
 			}
-			create_colony = { owner = event_target:chosen_empire }
 			create_life_seeded_planet = yes
 			clear_blockers = yes
 			generate_start_buildings_and_districts = yes
-			remove_building = building_colony_shelter
 			generate_starting_rural_districts = yes
 			generate_start_pops = yes
 			# To make up for the disadvantage of being stuck behind the wormhole
 			weighted_random_owned_pop_group = {
 				add_pop_amount = { amount = 6000 }
+			}
+			while = {
+				count = 5
+				add_district_if_possible_effect = {
+					district = district_city
+					}
 			}
 		}
 	}

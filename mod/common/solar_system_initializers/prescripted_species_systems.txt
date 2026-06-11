@@ -322,8 +322,9 @@ une_deneb_system = {
 							set_origin = origin_clone_army
 						}
 					}
+					day_zero_contact = no #otherwise enclaves and FEs get instant comms
 				}
-				create_colony = { owner = event_target:npc_CoM }
+				#create_colony = { owner = event_target:npc_CoM } #not needed for capital
 				generate_start_deposits_and_blockers = yes
 				clear_blockers = yes
 				generate_start_buildings_and_districts = yes
@@ -1429,8 +1430,9 @@ ai_titawin_init = {
 							influence = 200
 						}
 					}
+					day_zero_contact = no #otherwise enclaves and FEs get instant comms
 				}
-				create_colony = { owner = event_target:npc_TPC }
+				#create_colony = { owner = event_target:npc_TPC } #not needed for capital
 				generate_start_deposits_and_blockers = yes
 				generate_start_buildings_and_districts = yes
 				generate_start_pops = yes
@@ -1462,6 +1464,18 @@ ai_titawin_init = {
 	}
 
 	change_orbit = -245
+
+	init_effect = {
+		create_starbase = {
+			size = starbase_starport
+			module = shipyard
+			building = crew_quarters
+			owner = event_target:npc_TPC
+			effect = {
+				set_starbase_module = { slot = 2 module = trading_hub }
+			}
+		}
+	}
 
 	neighbor_system = {
 		trigger = {
